@@ -1,0 +1,6 @@
+<h1>Confirm delete?</h1>
+<mat-dialog-actions align="center">
+      <button mat-raised-button mat-dialog-close (click)="onNoClick()" style="width: 150px;">Cancel</button>
+      <button mat-raised-button [mat-dialog-close]="phase" cdkFocusInitial
+            style="width: 150px;background-color: red;color: white;">Delete</button>
+</mat-dialog-actions>

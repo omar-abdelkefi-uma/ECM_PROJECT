@@ -1,0 +1,257 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add project</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary"> <span style="width: 130px;display: inline-block;">Add
+                  Tasks</span> </button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="container">
+          <div class="row" style="overflow-x: auto;flex-wrap: nowrap;">
+            <div class="col-md-4 max-w">
+              <div class="section-heading">To do</div>
+              <div class="drag-container">
+                <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                  [cdkDropListConnectedTo]="[doneList,reviewList,testList]" class="item-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="item-box" *ngFor="let item of todo" cdkDrag>
+                    <span class="nametask">
+                      {{item}}
+                    </span>
+                    <div class="menutask">
+                      <div>
+                        <a class="menu-action" [matMenuTriggerFor]="menu">
+                          <!---open mecu-->
+                          <i class="material-icons">more_vert</i>
+                        </a>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>
+                            <mat-icon>dialpad</mat-icon>
+                            <span>Redial</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>voicemail</mat-icon>
+                            <span>Check voicemail</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>notifications_off</mat-icon>
+                            <span>Disable alerts</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                    <div class="avatoremployee">
+                      <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                      </div>
+                      <ng-template #Block>
+                        <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                          size="50"></ngx-avatar>
+                      </ng-template>
+                      <ng-template #elseBlock>
+                        <ngx-avatar size="29" name="omar abde " value="50%"></ngx-avatar>
+                      </ng-template>
+                    </div>
+                    <div class="emailemploye">
+                      <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                      <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                        <div class="material-icons" style="max-width: 100%;">mail outline</div>
+                      </a>
+                      <!---start-->
+                      <div class="material-icons">alarm</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-task" (click)="addtask()">+ <span>Task</span></div>
+              </div>
+            </div>
+            <!-----------doing-->
+            <div class="col-md-4 max-w">
+              <div class="section-heading">Doing</div>
+              <div class="drag-container">
+                <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                  [cdkDropListConnectedTo]="[todoList,reviewList,testList]" class="item-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="item-box" *ngFor="let item of done" cdkDrag>
+                    <span class="nametask">
+                      {{item}}
+                    </span>
+                    <div class="menutask">
+                      <div>
+                        <a class="menu-action" [matMenuTriggerFor]="menu">
+                          <!---open mecu-->
+                          <i class="material-icons">more_vert</i>
+                        </a>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>
+                            <mat-icon>dialpad</mat-icon>
+                            <span>Redial</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>voicemail</mat-icon>
+                            <span>Check voicemail</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>notifications_off</mat-icon>
+                            <span>Disable alerts</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                    <div class="avatoremployee">
+                      <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                      </div>
+                      <ng-template #Block>
+                        <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                          size="50"></ngx-avatar>
+                      </ng-template>
+                      <ng-template #elseBlock>
+                        <ngx-avatar size="29" name="omar abde " value="50%"></ngx-avatar>
+                      </ng-template>
+                    </div>
+                    <div class="emailemploye">
+                      <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                      <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                        <div class="material-icons">mail outline</div>
+                      </a>
+                      <!---start-->
+                      <div class="material-icons">alarm</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-task" (click)="addtask()">+ <span>Task</span></div>
+              </div>
+            </div>
+            <!-------------------------test-->
+            <div class="col-md-4 max-w">
+              <div class="section-heading">Test</div>
+              <div class="drag-container">
+                <div cdkDropList #reviewList="cdkDropList" [cdkDropListData]="review"
+                  [cdkDropListConnectedTo]="[doneList,todoList,testList]" class="item-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="item-box" *ngFor="let item of review" cdkDrag>
+                    <span class="nametask">
+                      {{item}}
+                    </span>
+                    <div class="menutask">
+                      <div>
+                        <a class="menu-action" [matMenuTriggerFor]="menu">
+                          <!---open mecu-->
+                          <i class="material-icons">more_vert</i>
+                        </a>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>
+                            <mat-icon>dialpad</mat-icon>
+                            <span>Redial</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>voicemail</mat-icon>
+                            <span>Check voicemail</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>notifications_off</mat-icon>
+                            <span>Disable alerts</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                    <div class="avatoremployee">
+                      <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                      </div>
+                      <ng-template #Block>
+                        <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                          size="50"></ngx-avatar>
+                      </ng-template>
+                      <ng-template #elseBlock>
+                        <ngx-avatar size="29" name="omar abde " value="50%"></ngx-avatar>
+                      </ng-template>
+                    </div>
+                    <div class="emailemploye">
+                      <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                      <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                        <div class="material-icons">mail outline</div>
+                      </a>
+                      <!---start-->
+                      <div class="material-icons">alarm</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-task" (click)="addtask()">+ <span>Task</span></div>
+              </div>
+            </div>
+            <!----------------------------done-->
+            <div class="col-md-4 max-w">
+              <div class="section-heading">Done</div>
+              <div class="drag-container">
+                <div cdkDropList #testList="cdkDropList" [cdkDropListData]="test"
+                  [cdkDropListConnectedTo]="[doneList,todoList,reviewList]" class="item-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="item-box" *ngFor="let item of test" cdkDrag>
+                    <span class="nametask">
+                      {{item}}
+                    </span>
+                    <div class="menutask">
+                      <div>
+                        <a class="menu-action" [matMenuTriggerFor]="menu">
+                          <!---open mecu-->
+                          <i class="material-icons">more_vert</i>
+                        </a>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item>
+                            <mat-icon>dialpad</mat-icon>
+                            <span>Redial</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>voicemail</mat-icon>
+                            <span>Check voicemail</span>
+                          </button>
+                          <button mat-menu-item>
+                            <mat-icon>notifications_off</mat-icon>
+                            <span>Disable alerts</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </div>
+                    <div class="avatoremployee">
+                      <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                      </div>
+                      <ng-template #Block>
+                        <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                          size="50"></ngx-avatar>
+                      </ng-template>
+                      <ng-template #elseBlock>
+                        <ngx-avatar size="29" name="omar abde " value="50%"></ngx-avatar>
+                      </ng-template>
+                    </div>
+                    <div class="emailemploye">
+                      <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                      <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                        <div class="material-icons">mail outline</div>
+                      </a>
+                      <!---start-->
+                      <div class="material-icons">alarm</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="add-task" (click)="addtask()">+ <span>Task</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

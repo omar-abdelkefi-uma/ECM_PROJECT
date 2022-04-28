@@ -1,0 +1,42 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add Image</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary" (click)="edit()"><span
+                  style="width: 130px;display: inline-block;">Return</span></button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card>
+          <div class="row">
+            <div class="col-md-12">
+              <app-take-image></app-take-image>
+              <br><br>
+              <div class="row justify-content-md-center">
+                <button mat-raised-button color="primary" style="background-color:#f5365c ; color: white;"><span
+                    style="width: 150px;display: inline-block;">Cancel</span></button>
+                <div class=" pl-6 ">
+                  <button mat-raised-button color="primary" (click)="addimage()"><span
+                      style="width: 150px;display: inline-block;">Add</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

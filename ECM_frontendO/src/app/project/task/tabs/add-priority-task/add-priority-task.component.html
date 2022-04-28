@@ -1,0 +1,20 @@
+<div style="width: 400px ">
+  <h1 mat-dialog-title style="color: crimson;">Add Priority Task</h1>
+  <div class="mat-typography">
+    <div class="mycontaine">
+      <mat-form-field class="col">
+        <mat-label>name</mat-label>
+        <input matInput [(ngModel)]="priorityTask.name" [formControl]="FormControl">
+        <mat-error *ngIf="FormControl.hasError('required')">
+          Name is <strong> required</strong>
+        </mat-error>
+      </mat-form-field><br>
+    </div>
+    <br>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="onNoClick()"
+      style="margin-right: 15px;width: 180px;display: inline-block;background-color: red;">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="priorityTask" cdkFocusInitial
+      style="width: 180px;display: inline-block;">Add</button>
+  </div>

@@ -1,0 +1,119 @@
+.section-heading {
+  padding: 9px 10px 5px 92px;
+  font-weight: bold;
+  position: relative;
+  background-color: #999999c7;
+  font-size: 21px;
+  display: flex;
+  height: 50px;
+  margin-bottom: 7px;
+  margin-top: 15px;
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.42), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+  border-radius: 10px;
+}
+/*all container when drag*/
+.drag-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 18px 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #eee;
+  padding: 15px;
+  border-radius: 5px;
+}
+.item-list {
+  min-height: 140px;
+  border-radius: 4px;
+  display: block;
+}
+.item-box {
+  padding: 8px 6px 7px 10px;
+  border: solid 1px #ccc;
+  margin-bottom: 5px;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+ /* border-radius: 20px;*/
+ border-radius: 2px;
+}
+/*when drag*/
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.item-list.cdk-drop-list-dragging .item-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.add-task{
+  font-weight: bold;
+  margin: 11px auto 1px auto;
+  padding-left: 29%;
+  color: #0000ffc4;
+  font-size: 20px;
+  cursor: pointer;
+}
+.max-w{
+  max-width: 31%;
+  cursor: move;
+}
+.avatoremployee{
+float: right;
+margin-top: 19px;
+clear: both;
+}
+.menutask{
+float: right;
+cursor: pointer;
+}
+.emailemploye{
+display: flex;
+margin: 14px 0px 2px 3px;
+}
+.nametask{
+font-size: 21px;
+font-weight: bold;
+color: #00000080;
+}
+::ng-deep .aallmenu{
+  min-width: 200px !important;
+  max-width: 250px !important;
+}
+/*all tabs*/
+.mat-card{
+  background: #f4f5f7  ;
+  padding: 0;
+}
+/*active label*/
+::ng-deep.mat-tab-label-active{
+ font-weight: bold;
+ color: #172b4d;
+}
+/*label*/
+::ng-deep.mat-tab-label{
+  min-width: 30%!important;
+}
+/*tab active color*/
+::ng-deep .mat-ink-bar {
+  background-color:#5e72e4 !important;
+}
+/*body content*/
+::ng-deep .mat-tab-body-wrapper{
+  background-color: #fff;
+  padding: 24px 14px 11px 18px;
+}
+.slider .slideritem{
+  width: 86%;
+}

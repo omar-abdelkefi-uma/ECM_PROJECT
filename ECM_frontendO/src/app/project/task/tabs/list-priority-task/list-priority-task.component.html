@@ -1,0 +1,50 @@
+<mat-card style="padding-top: 0px;">
+  <div>
+    <button mat-raised-button color="primary" (click)="addPriorityTask()"
+      style="margin-bottom: 16px;margin-right: 3px; background-color: #172b4d;float: right;height: 50px;width: 159px;border-radius: 30px;">
+      <mat-icon>add</mat-icon><span style="width: 91px;display: inline-block;">Add Type task</span>
+    </button>
+  </div>
+  <input type="text" id="myInput" class="fad fa-search" (keyup)="applyFilter($event)" placeholder="Search for names"
+    title="Type in a name">
+  <div class="example-container mat-elevation-z1" [hidden]="!isTableHasData">
+    <table mat-table [dataSource]="dataSource">
+      <!-- num Column -->
+      <!--meme nom dans display column****************Row 0-->
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No </th>
+        <!--dans objet  il faut a attribut name==****DAta-->
+        <td mat-cell *matCellDef="let element;index as i"> {{i+1}} </td>
+      </ng-container>
+      <!--  Column -->
+      <!--meme nom dans display column****************Row 0-->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef><span> Name</span> </th>
+        <!--dans objet  il faut a attribut name==****DAta-->
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <!-- Option Column -->
+      <ng-container matColumnDef="option">
+        <th mat-header-cell *matHeaderCellDef> Option </th>
+        <td mat-cell *matCellDef="let element" class="info">
+          <button mat-icon-button (click)="edit(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button style="color:warn" (click)="openDialog(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons style=" background-color: #f4f5f7;">
+    </mat-paginator>
+  </div>
+  <div [hidden]="isTableHasData" style="text-align: center;">
+    <img src=".../../../../assets/NoRecordFound1.png">
+  </div>
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that
+        can be found in the LICENSE file at http://angular.io/license -->
+</mat-card>

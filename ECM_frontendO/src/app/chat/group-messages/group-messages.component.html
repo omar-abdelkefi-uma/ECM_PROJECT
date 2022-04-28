@@ -1,0 +1,29 @@
+<ng-container *ngIf="(messagesofuserclicked); else noMessagesInGroup">
+  <div class="text-muted small mt-3" [tooltip]="creationDate| date:'short'" placement="auto">
+    <div *ngIf="group.imageprofile!=null ;then Block else elseBlock">
+    </div>
+    <ng-template #Block>
+      <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+_activeGroup.imageprofile.imageid}}"
+        size="65"></ngx-avatar>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ngx-avatar size="65" name="{{_activeGroup.username}} " value="75%"></ngx-avatar>
+    </ng-template>
+    <div style="font-size: 22px;color: #172b4d;">{{_activeGroup.fullname}}</div>
+    <div>{{_activeGroup.type}}</div>
+    <!--<fa-icon [icon]="['fas','user-friends']" [fixedWidth]="true" class="mr-1"></fa-icon> Gruppe erstellt durch Marco Franke-->
+  </div>
+  <vng-chat-message [message]="message" *ngFor="let message of messagesofuserclicked" [@flyInOut]="'in'">
+  </vng-chat-message>
+  <div #bottom_anchor></div>
+</ng-container>
+<ng-template #noMessagesInGroup>
+  <!-- <div class="mx-3 pt-3"> -->
+  <div class="d-flex flex-fill align-items-center flex-column text-center align-self-stretch h-100">
+    <div class="my-auto text-muted">
+      <h5 class="mt-0">No news </h5>
+      Be the first to start an exciting conversation!
+    </div>
+  </div>
+  <!-- </div> -->
+</ng-template>

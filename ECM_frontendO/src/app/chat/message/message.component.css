@@ -1,0 +1,27 @@
+.separator {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    height: auto;
+    transform: none;
+    overflow: hidden;
+    pointer-events: none;
+}
+.separator fa-icon svg{
+    position: relative !important;
+    padding: 0px 23px 0px 0px;
+}
+.svg-inline--fa{
+    position: relative !important;
+}
+.othermargin{
+    margin-right: 320px;
+}
+.memargin{
+    margin-left: 320px;
+}
+.mecolor{
+    background-color: #2dce89;
+}

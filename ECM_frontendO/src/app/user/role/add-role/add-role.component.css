@@ -1,0 +1,27 @@
+.example-form {
+  width: 70%;
+}
+.demo-sub-list {
+  margin-left: 20px;
+}
+/*header*/
+.cardheader{
+    height: 4%;
+}
+  .demo-menu section {
+    display: flex;
+    align-items: center;
+    margin: 2px;
+  }
+  p {
+    padding: 5px 15px;
+  }
+.form{
+  padding-left: 9px;
+  padding-top: 3px;
+}
+.tilefix{
+  width: 95%;
+  height: 100%; 
+  padding-left: 15px;
+}

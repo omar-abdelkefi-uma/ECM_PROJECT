@@ -1,0 +1,11 @@
+<div class="user-image">
+  <img src="{{'data:image/jpg;base64,'+user.imageprofile.imageid}}" *ngIf="user.imageprofile!=null"
+    class="rounded-circle img-thumbnail dimention" [style.background]="user.color">
+  <img src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" *ngIf="user.imageprofile==null"
+    class="rounded-circle img-thumbnail dimention" [style.background]="user.color">
+  <div class="user-status img-thumbnail" tooltip="{{user.status}}" container="body"
+    [class.bg-danger]="user.status == 'dnd'" [class.bg-warning]="user.status == 'absent'"
+    [class.bg-success]="user.status == 'online'" [class.bg-secondary]="user.status == 'offline'">
+    <!-- <fa-icon [icon]="['fas','check']" [fixedWidth]="true"></fa-icon> -->
+  </div>
+</div>

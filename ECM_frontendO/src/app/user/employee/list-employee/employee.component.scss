@@ -1,0 +1,63 @@
+.cardheader{
+  margin:0;
+  padding: 20px;
+}
+.cardcontent{
+  margin:5px 12px 5px 12px;
+  padding: 0px 0px 15px 0px; 
+}
+.mat-table {
+        display: table;
+        width: 100%;
+}
+.mat-cell,
+.mat-header-cell {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+th.mat-column-username{
+    background-color:  #f4f5f7;
+}
+th.mat-column-no{
+    background-color: #f4f5f7;
+}
+th.mat-column-avatar{
+    background-color: #f4f5f7;
+}
+th.mat-column-option{
+  background-color: #f4f5f7;
+}
+th.mat-column-phone{
+  background-color: #f4f5f7;
+}
+th.mat-column-city{
+  background-color: #f4f5f7;
+}
+th.mat-column-Nomcomplet{
+  background-color: #f4f5f7;
+}
+.mat-column-no{
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 6% !important;
+}
+.mat-column-avatar{
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 10% !important;
+} 
+#myInput {
+  background-image: url('../../../../assets/serachicon.png ');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}    
+.info{
+  color: #fb6340;
+}

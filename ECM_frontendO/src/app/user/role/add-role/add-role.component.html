@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add Role</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary" (click)="listrole()"> <span
+                  style="width: 130px;display: inline-block;">List Role</span> </button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card>
+          <form (ngSubmit)="getallchekked()" [formGroup]="rolegroup" class="form">
+            <div class="form">
+              <div class="row">
+                <mat-form-field style="width: 50%;">
+                  <input matInput placeholder="Role *" formControlName="roleControl" name="rolename"
+                    [(ngModel)]="role.name">
+                  <mat-error *ngIf="rolegroup.get('roleControl').invalid">Role est requis
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 80%;">
+                  <textarea matInput placeholder="description" formControlName="descriptionControl" name="descripname"
+                    [(ngModel)]="role.description"></textarea>
+                  <mat-error *ngIf="rolegroup.get('descriptionControl').invalid">description est requis
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <br>
+                <h2 class="text-muted mb-2">Permissions</h2><br>
+                <div class="tilefix">
+                  <br>
+                  <mat-accordion multi="true">
+                    <mat-expansion-panel *ngFor="let task of roles">
+                      <!--ajouter [ngModelOptions]="{standalone: true} si n'est pas input car dans form-->
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <h3>{{task.module}}</h3>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-checkbox [(ngModel)]="task.completed" [checked]="allComplete(task)"
+                        [indeterminate]="someComplete(task.subtasks)"
+                        (change)="setAllCompleted(task.subtasks, $event.checked)" [ngModelOptions]="{standalone: true}">
+                        {{task.name}}
+                      </mat-checkbox>
+                      <div class="demo-sub-list">
+                        <div *ngFor="let subtask of task.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed" [ngModelOptions]="{standalone: true}">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </div>
+              </div>
+            </div>
+            <br>
+            <mat-card-actions>
+              <div class="row justify-content-md-center ">
+                <button mat-raised-button color="primary" type="reset" style="background-color: #f5365c;"><span
+                    style="width: 130px;display: inline-block;">Cancel</span></button>
+                <button mat-raised-button color="primary" type="submit" style="margin-left: 5%;"><span
+                    style="width: 130px;display: inline-block;">Add</span> </button>
+              </div>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

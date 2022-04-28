@@ -1,0 +1,322 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add Employee</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary" (click)="listEmployee()"><span
+                  style="width: 130px;display: inline-block;">List Employee</span></button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card>
+          <div class="row">
+            <div class="col-md-12">
+              <!--isLinear-->
+              <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+                <!---------------------------------------------step 1--------------------------------------------------------->
+                <mat-step>
+                  <form (ngSubmit)="goForward(stepper)">
+                    <ng-template matStepLabel>Informations De Base</ng-template>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <input matInput placeholder="username" [formControl]="usernameFormControl" name="username"
+                            [(ngModel)]="Employee.username">
+                          <mat-error
+                            *ngIf="usernameFormControl.hasError('email') && !usernameFormControl.hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                          <mat-error *ngIf="usernameFormControl.hasError('required')">
+                            Username is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <input matInput placeholder="Mot de passe" [type]="hide ? 'password' : 'text' "
+                            name="password" [(ngModel)]="Employee.password">
+                          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}
+                          </mat-icon>
+                          <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Password is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <mat-select placeholder="Role " [(ngModel)]="RoleSelectedValue" id="roleselect"
+                            [formControl]="roleFormControl" name="role">
+                            <mat-option *ngFor="let role of roles;" [value]="role.id">
+                              {{role.name}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="roleFormControl.hasError('required')">
+                            Role is <strong> required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class=" col-md-4">
+                        <mat-form-field class="example-form">
+                          <input matInput placeholder="firstname & lasname *" id="fullname"
+                            [formControl]="fullnameControl" name="firstname" [(ngModel)]="Employee.fullname">
+                          <mat-error *ngIf="fullnameControl.hasError('required')">
+                            Fullname is <strong> required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <input matInput [matDatepicker]="picker" placeholder="Date de naissance"
+                            [formControl]="dateControl" name="dateofbirth" [(ngModel)]="Employee.dateofbirth">
+                          <mat-error *ngIf="testDate(Employee.dateofbirth)">
+                            âge doit être supérieur à 20
+                          </mat-error>
+                          <mat-error *ngIf="dateControl.hasError('required')">
+                            Date de naissance is <strong> required</strong>
+                          </mat-error>
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <mat-select placeholder="Sexe *" [formControl]="sexeControl" name="gender"
+                            [(ngModel)]="Employee.gender">
+                            <mat-option *ngFor="let etat of sexe" [value]="etat.value">
+                              {{etat.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="sexeControl.hasError('required')">
+                            Sexe is <strong> required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <input matInput placeholder="Cin *" maxlength="8" [formControl]="cinControl" name="cin"
+                            [(ngModel)]="Employee.cin">
+                          <mat-error *ngIf="cinControl.hasError('pattern') && !cinControl.hasError('required')">
+                            Cin est de 8 chiffre
+                          </mat-error>
+                          <mat-error *ngIf="cinControl.hasError('required')">
+                            Cin is <strong> required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <mat-select placeholder="Ville" [formControl]="villeControl" name="city"
+                            [(ngModel)]="Employee.city">
+                            <mat-option>-- None --</mat-option>
+                            <mat-optgroup *ngFor="let group of villeGroups" [label]="group.name">
+                              <!--<mat-optgroup *ngFor="let group of villeGroups" [label]="group.name"
+                                                      [disabled]="group.disabled">-->
+                              <mat-option *ngFor="let ville of group.ville" [value]="ville.value">
+                                {{ ville.viewValue }}
+                              </mat-option>
+                            </mat-optgroup>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <span matPrefix>+216 &nbsp;</span>
+                          <input matInput placeholder="phone " [formControl]="TelControl" name="phone"
+                            [(ngModel)]="Employee.phone">
+                          <mat-error *ngIf="lieuControl.hasError('required')">
+                            Tel est Obligatoire <strong> requis</strong>
+                          </mat-error>
+                          <mat-icon matSuffix>
+                            <i class="material-icons">perm_phone_msg</i>
+                          </mat-icon>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-2 offset-md-10">
+                        <!--click==>add information to service-->
+                        <button mat-button type="submit" mat-button matStepperNext
+                          style="background-color:#2dce89 ;"><span style="width: 90px;display: inline-block;">Next
+                            >></span> </button>
+                      </div>
+                    </div>
+                  </form>
+                </mat-step>
+                <!-------------------------------------------------step2-->
+                <mat-step>
+                  <form (ngSubmit)="goForward2(stepper)">
+                    <ng-template matStepLabel>Other information</ng-template>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <mat-form-field class="example-form">
+                          <mat-select placeholder="Expérience " #f [(ngModel)]="selectedValueexperience"
+                            name="experience">
+                            <mat-option *ngFor="let ex of experience" [value]="ex.value">
+                              {{ex.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-8">
+                        <div style="margin-top: 35px;display: inline-block;margin-left: 19px;">
+                          <mat-checkbox [(ngModel)]="isprojectmanager" (change)="checkisprojectman()"
+                            style="margin-right: 40px;">Project Manager</mat-checkbox>
+                        </div>
+                        <mat-form-field style="width: 48%;margin-left: 19px;">
+                          <mat-select placeholder="Department" [(ngModel)]=" departmentSelectedValue" id="department"
+                            [formControl]="departmentFormControl" name="projectmanager">
+                            <mat-option *ngFor="let department of departments;" [value]="department">
+                              {{department.name}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="departmentFormControl.hasError('required')">
+                            Department is <strong> required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div *ngFor="let exp of listExp;index as i">
+                      <div class="row" [hidden]="visibleexp()">
+                        <div class="col-md-3">
+                          <mat-form-field class="example-form">
+                            <input matInput placeholder="Poste *" name="poste{{i}}" [(ngModel)]="exp.position">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                          <mat-form-field class="example-form">
+                            <input matInput placeholder="Societé *" name="societe{{i}}" [(ngModel)]="exp.company">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                          <mat-form-field class="example-form">
+                            <input matInput placeholder="durée d'expérience *" name="duree{{i}}"
+                              [(ngModel)]="exp.duration">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                          <button *ngIf="i==(listExp.length-1)" (click)="clickadd()">{{plusIcon}}</button>
+                        </div>
+                        <div class="col-md-3" style="margin-left: 75%;"> <button *ngIf="i!=0"
+                            (click)="clickdelete(i)">{{minusIcon}}-</button></div>
+                      </div>
+                      <br><br>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-1 offset-md-8">
+                        <button mat-button matStepperPrevious style="background-color:#f5365c ;"><span
+                            style="width: 90px;display: inline-block;">
+                            << Back </span> </button>
+                      </div>
+                      <div class="col-md-1 offset-md-1">
+                        <!--click==>add information to service-->
+                        <button mat-button type="submit" mat-button matStepperNext
+                          style="background-color:#2dce89 ;"><span style="width: 90px;display: inline-block;">Next
+                            >></span> </button>
+                      </div>
+                    </div>
+                  </form>
+                </mat-step>
+                <!---------------step 4-->
+                <mat-step>
+                  <ng-template matStepLabel>Document</ng-template>
+                  <div class="centere">
+                    <div class=" text-center ">
+                      <label class="btn ">
+                        <input type="file" (change)="selectFile($event)">
+                      </label>
+                    </div>
+                    <div class="upload-table ">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Nom de fichier</th>
+                            <th>Supprimer</th>
+                          </tr>
+                        </thead>
+                        <tbody class="upload-name-style">
+                          <tr *ngFor="let item of files; let i=index">
+                            <td><strong>{{ item.name }}</strong></td>
+                            <td><button (click)="deleteDocument(i)" style="border: none;
+                                              overflow: visible;
+                                              padding: 4px 8px;"><i class="material-icons">delete_forever</i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-1 offset-md-8">
+                      <button mat-button matStepperPrevious style="background-color:#f5365c ;"><span
+                          style="width: 90px;display: inline-block;">
+                          << Back </span> </button>
+                    </div>
+                    <div class="col-md-1 offset-md-1">
+                      <!--click==>add information to service-->
+                      <button mat-button type="submit" mat-button matStepperNext
+                        style="background-color:#2dce89 ;"><span style="width: 90px;display: inline-block;">Next
+                          >></span> </button>
+                    </div>
+                  </div>
+                </mat-step>
+                <!-------------------------------------------------step3-->
+                <mat-step>
+                  <ng-template matStepLabel>Image</ng-template>
+                  <div class="row custom-wrapper">
+                    <div class="col-md-12">
+                      <div class="group-gap">
+                        <!-- Upload image -->
+                        <div class="avatar-upload">
+                          <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                              (change)="fileChangeEvent($event)" />
+                          </div>
+                          <div class="avatar-preview">
+                            <div id="imagePreview" [style.backgroundImage]="'url('+ cardImageBase64 +')'">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Submit Button -->
+                      <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload
+                        Image</button>
+                    </div>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col-md-1 offset-md-8">
+                      <button mat-button matStepperPrevious style="background-color:#f5365c ;"><span
+                          style="width: 90px;display: inline-block;">
+                          << Back </span> </button>
+                    </div>
+                    <div class="col-md-1 offset-md-1">
+                      <button mat-raised-button color="primary" (click)="AddEmployee()"><span
+                          style="width: 90px;display: inline-block;">Add</span></button>
+                    </div>
+                  </div>
+                </mat-step>
+              </mat-horizontal-stepper>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

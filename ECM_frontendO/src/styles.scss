@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+  /*REMOVE BLACK BORDER*/
+  *:focus {
+    outline: none !important;
+   
+   }
+
+   html,body {
+    height: 100vH;
+    overflow: auto;
+  }
+  
+  // div {
+  //     background-color: rgba(86,61,124,.15);
+  //     border: 1px solid rgba(86,61,124,.15);
+  // }
+  // fa-icon {
+  //   vertical-align: middle;
+  //   color: red;
+  // }
+  
+  /* Flatten das boostrap */
+  .well, .navbar-inner, .popover, .btn, .tooltip, input, select, textarea, pre, .progress, .modal, .add-on, .alert, .table-bordered, .nav>.active>a, .dropdown-menu, .tooltip-inner, .badge, .label, .img-polaroid, .panel {
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      -webkit-border-radius: 0px !important;
+      -moz-border-radius: 0px !important;
+      border-radius: 0px !important;
+      border-collapse: collapse !important;
+      background-image: none !important;
+  }

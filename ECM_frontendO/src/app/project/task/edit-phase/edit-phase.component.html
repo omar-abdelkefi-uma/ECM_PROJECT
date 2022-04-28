@@ -1,0 +1,20 @@
+<div style="width: 400px ">
+  <h1 mat-dialog-title style="color: crimson;">Edit Phase</h1>
+  <div class="mat-typography">
+    <div class="mycontaine">
+      <mat-form-field class="col">
+        <input matInput [(ngModel)]="phase.name" placeholder="Phase" [formControl]="NameControl">
+        <mat-error *ngIf="NameControl.hasError('required')">
+          Phase is
+          <strong> Required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="onNoClick()"
+      style="margin-right: 15px;width: 180px;display: inline-block;background-color: red;">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="phase" cdkFocusInitial
+      style="width: 180px;display: inline-block;">Edit</button>
+  </div>

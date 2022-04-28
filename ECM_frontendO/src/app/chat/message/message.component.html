@@ -1,0 +1,31 @@
+<div class="chat-message mx-3 pt-3" [tooltip]="message.systemNotify && (message.dateCreation| date:'short')"
+	placement="auto">
+	<ng-container *ngIf="(message.systemNotify == undefined || message.systemNotify == false)">
+		<div class="d-flex align-items-center" [class.memargin]="message.sender == 'me'"
+			[class.othermargin]="message.sender != 'me'" [class.flex-row-reverse]="message.sender != 'me'"
+			[class.flex-row]="message.sender == 'me'">
+			<!--
+			<ng-container *ngIf="message.sender == 'other'">
+				<fa-icon [icon]="['fas','check-double']" [class.ml-1]="message.sender == 'other'" class="small" *ngIf="message.delivered"
+				 [class.text-primary]="message.read" class="align-self-end"></fa-icon>
+				<fa-icon [icon]="['fas','check']" [class.ml-1]="message.sender == 'other'" class="small" *ngIf="!message.delivered" class="align-self-end"
+				 [class.text-primary]="message.read"></fa-icon>
+			</ng-container>
+		-->
+			<div class="media-body px-2 rounded border text-left" [class.mecolor]="message.sender == 'me'">
+				<div class="d-flex flex-row justify-content-between">
+					<div class="font-weight-light small mh-100">{{message.user.fullname }}:</div>
+					<span class="text-muted small">{{message.dateCreation | date:'short'}}</span>
+				</div>
+				{{ message.content }}
+			</div>
+			<app-user-image [user]="message.user" [class.ml-2]="message.sender != 'other'"
+				[class.mr-2]="message.sender != 'me'" class="align-self-baseline"></app-user-image>
+		</div>
+	</ng-container>
+	<ng-container *ngIf="message.systemNotify">
+		<div class="separator text-muted small">
+			<i class="fas fa-sign-in-alt mr-1"></i> {{message.content}}
+		</div>
+	</ng-container>
+</div>

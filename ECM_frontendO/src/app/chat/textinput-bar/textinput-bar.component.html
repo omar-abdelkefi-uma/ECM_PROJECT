@@ -1,0 +1,10 @@
+<div class="d-flex flex-row justify-content-between align-items-center border-0 h-100">
+  <button class="btn">
+    <fa-icon [icon]="['far','laugh-beam']" size="1x"></fa-icon>
+  </button>
+  <input class="w-100 border-0 p-2 flex-fill text-message text-truncate" type="text" [(ngModel)]="textMessage"
+    (keydown.enter)="sendMessage(textMessage)" placeholder="Write a message">
+  <button class="btn border-0" (click)="sendMessage(textMessage)">
+    <fa-icon [icon]="['far','paper-plane']"></fa-icon>
+  </button>
+</div>

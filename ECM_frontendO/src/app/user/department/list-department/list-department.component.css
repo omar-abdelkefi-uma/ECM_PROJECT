@@ -1,0 +1,43 @@
+.mat-table {
+    display: table;
+    width: 100%;
+}
+.mat-cell,
+.mat-header-cell {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+th.mat-column-name{
+  background-color:  #f4f5f7;
+}
+th.mat-column-no{
+  background-color: #f4f5f7;
+}
+th.mat-column-company{
+  background-color: #f4f5f7;
+}
+th.mat-column-city{
+  background-color: #f4f5f7;
+}
+th.mat-column-option{
+  background-color: #f4f5f7;
+}
+
+th.mat-column-email{
+  background-color: #f4f5f7;
+}
+
+
+#myInput {
+  background-image: url('../../../../assets/serachicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}    
+.info{
+  color: #fb6340;
+}

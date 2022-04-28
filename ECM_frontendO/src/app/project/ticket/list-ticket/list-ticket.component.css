@@ -1,0 +1,79 @@
+  .mat-table {
+      display: table;
+      width: 100%;
+  }
+.mat-cell,
+.mat-header-cell {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+  th.mat-column-topic{
+    background-color:  #f4f5f7;
+  }
+  th.mat-column-no{
+    background-color: #f4f5f7;
+  }
+  th.mat-column-status{
+    background-color: #f4f5f7;
+  }
+  th.mat-column-client{
+    background-color: #f4f5f7;
+  }
+  th.mat-column-project{
+    background-color: #f4f5f7;
+  }
+  th.mat-column-option{
+    background-color: #f4f5f7;
+  }
+  th.mat-column-priority{
+    background-color: #f4f5f7;
+  }
+  .mat-column-no{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 6% !important;
+  }
+  .mat-column-priority{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 17% !important;
+  }
+  .mat-column-topic{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+  }
+  .mat-column-status{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+  }
+  .mat-column-client{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+  }
+  .mat-column-project{
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+  }
+  #myInput {
+    background-image: url('../../../../assets/serachicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }    
+  .info{
+    color: #fb6340;
+  }

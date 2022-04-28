@@ -1,0 +1,4 @@
+/*REMOVE BLACK BORDER*/
+*:focus {
+   outline: none !important;
+}

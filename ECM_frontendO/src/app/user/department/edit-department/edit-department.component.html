@@ -1,0 +1,30 @@
+<div style="width: 400px">
+  <h1 mat-dialog-title style="color: crimson;">Edit department</h1>
+  <mat-form-field class="col">
+    <input matInput placeholder="department Name*" id="name" [formControl]="FormControl" name="name"
+      [(ngModel)]="department.name">
+    <mat-error *ngIf="FormControl.hasError('required')">
+      Name is <strong> required</strong>
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="col">
+    <input matInput placeholder="Email " id="email" name="email" [(ngModel)]="department.email">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="col">
+    <mat-select placeholder="Company" [(ngModel)]="societySelectedValue" id="departmentselect" name="epartment">
+      <mat-option *ngFor="let society of societies;" [value]="society.id">
+        {{society.name}} {{society.city}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br><br>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="onNoClick()"
+      style="margin-right: 15px;width: 180px;display: inline-block;background-color: red;">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="department" (click)="editdepartment()"
+      style="width: 180px;display: inline-block;" cdkFocusInitial>Update</button>
+  </div>
+  <br>
+</div>

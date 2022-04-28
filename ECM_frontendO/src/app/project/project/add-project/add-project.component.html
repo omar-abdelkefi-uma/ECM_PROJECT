@@ -1,0 +1,155 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add project</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary"> <span style="width: 130px;display: inline-block;">List
+                  project</span> </button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card>
+          <form [formGroup]="projectgroup" class="form">
+            <div class="form">
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <input matInput placeholder="project Code *" formControlName="projectControl" name="projectcode"
+                    [(ngModel)]="project.code">
+                  <mat-error *ngIf="projectgroup.get('projectControl').invalid">project Code is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <input matInput placeholder="project Name *" formControlName="projectnameControl" name="projectname"
+                    [(ngModel)]="project.name">
+                  <mat-error *ngIf="projectgroup.get('projectnameControl').invalid">project name is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="Client " [(ngModel)]="clientSelectedValue" id="clientselect"
+                    formControlName="clientFormControl" name="client">
+                    <mat-option *ngFor="let client of clients;" [value]="client">
+                      {{client.username}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="projectgroup.get('clientFormControl').invalid">
+                    client is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="Status " [(ngModel)]="statusSelectedValue" id="statusselect"
+                    formControlName="statusFormControl" name="status">
+                    <mat-option *ngFor="let status of  statusProject;" [value]="status">
+                      {{status}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="projectgroup.get('statusFormControl').invalid">
+                    Status is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="type " [(ngModel)]="typeprojectSelectedValue" id="typeprojectselect"
+                    formControlName="typeprojectFormControl" name="typeproject">
+                    <mat-option *ngFor="let typepr of typeprojects;" [value]="typepr">
+                      {{typepr.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="projectgroup.get('typeprojectFormControl').invalid">
+                    typeproject is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="col-md-5" style="padding-left: 0px;">
+                  <mat-form-field style="width: 100%;">
+                    <input matInput #ref [matDatepicker]="picker" [max]="project.end" placeholder="Start"
+                      formControlName="startFormControl" name="start" [(ngModel)]="project.start">
+                    <mat-error *ngIf="projectgroup.get('startFormControl').invalid">
+                      Start of project is <strong> required</strong>
+                    </mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field style="width: 89%;">
+                    <input matInput #refend [matDatepicker]="pickerend" placeholder="End"
+                      formControlName="endFormControl" [min]="project.start" name="project.start"
+                      [(ngModel)]="project.end">
+                    <mat-error *ngIf="projectgroup.get('endFormControl').invalid">
+                      End of project is <strong> required</strong>
+                    </mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerend [startAt]="startDate"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="Project Manager " [(ngModel)]="projectmanagerSelectedValue"
+                    id="projectmanagerselect" formControlName="projectmanagerFormControl" name="projectmanager">
+                    <mat-option *ngFor="let projectmanager of projectmanagers;" [value]="projectmanager">
+                      {{projectmanager.username}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="projectgroup.get('projectmanagerFormControl').invalid">
+                    Project Manager is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-label>Employees</mat-label>
+                  <mat-select [(ngModel)]="employeeSelectedValue" multiple id="employeeselect"
+                    formControlName="employeeFormControl" name="employeemanager">
+                    <mat-option *ngFor="let employee of employees;" [value]="employee">
+                      {{employee.username}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="projectgroup.get('descriptionControl').invalid">description is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 91%;">
+                  <textarea matInput placeholder="description" formControlName="descriptionControl" name="descripname"
+                    [(ngModel)]="project.description"></textarea>
+                  <mat-error *ngIf="projectgroup.get('descriptionControl').invalid">description is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <br>
+            <mat-card-actions>
+              <div class="row justify-content-md-center ">
+                <button mat-raised-button color="primary" type="reset" style="background-color: #f5365c;"><span
+                    style="width: 130px;display: inline-block;">Reset</span></button>
+                <button mat-raised-button color="primary" (click)="Addproject()" type="submit"
+                  style="margin-left: 5%;"><span style="width: 130px;display: inline-block;">Add</span> </button>
+              </div>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

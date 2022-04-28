@@ -1,0 +1,39 @@
+<ng-container *ngIf="(groups); let groups">
+  <ng-container *ngIf="groups.length > 0; else noGroups">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item border-1 list-group-item-action px-2" *ngFor="let group of groups; let i = index"
+        [ngClass]="{'activelist': selectedItem === i}" (click)="activateGroup(group,i)">
+        <div class="d-flex flex-row justify-content-start align-items-center h-100">
+          <div *ngIf="group.imageprofile!=null ;then Block else elseBlock">
+          </div>
+          <ng-template #Block>
+            <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+group.imageprofile.imageid}}"
+              size="50"></ngx-avatar>
+          </ng-template>
+          <ng-template #elseBlock>
+            <ngx-avatar size="50" name="{{group.username}} " value="75%"></ngx-avatar>
+          </ng-template>
+          <span class="px-3">
+            <div class="d-flex flex-column align-content-start text-left">
+              <small class="group-name font-weight-bold">
+                {{ group.fullname }}
+              </small>
+              <small class=" group-info text-truncate">
+                {{ group.type }}
+              </small>
+            </div>
+          </span>
+          <span class="last-message-time"></span>
+        </div>
+      </li>
+    </ul>
+  </ng-container>
+</ng-container>
+<ng-template #noGroups>
+  <div class="d-flex flex-fill align-items-center flex-column text-center align-self-stretch h-100">
+    <div class="my-auto text-muted">
+      <h5 class="mt-0">No groups</h5>
+      Start a chat with a group of people to see them here
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,88 @@
+<h1 mat-dialog-title style="color: red;">Consulter rôle </h1>
+<div mat-dialog-content style="height:'600px'">
+  <div class="row">
+    <div class="col-md-4">
+      <label><b>Rôle : </b> </label>
+    </div>
+    <div class="col-md-8">
+      {{role.name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label><b>Description : </b></label>
+    </div>
+    <div class="col-md-8">
+      {{role.description}}
+    </div>
+  </div>
+  <b>
+    <div class="list">Liste des permissions : </div>
+  </b>
+  <br><br>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>Administrator</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="adminpermission.length!==0; else elseBlock">
+        <ul>
+          <li *ngFor="let permission of adminpermission">{{permission.permission_name}}<br /><br /></li>
+        </ul>
+      </div>
+      <ng-template #elseBlock>
+        <div class="nopermi"> No Permission Found !</div>
+      </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>Project</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="projectpermission.length!==0; else elseBlock">
+        <ul>
+          <li *ngFor="let permission of projectpermission">{{permission.permission_name}}<br /><br /></li>
+        </ul>
+      </div>
+      <ng-template #elseBlock>
+        <div class="nopermi"> No Permission Found !</div>
+      </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>Employee</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="employeepermission.length!==0; else elseBlock">
+        <ul>
+          <li *ngFor="let permission of employeepermission">{{permission.permission_name}}<br /><br /></li>
+        </ul>
+      </div>
+      <ng-template #elseBlock>
+        <div class="nopermi"> No Permission Found !</div>
+      </ng-template>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2>Client</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="clientpermission.length!==0; else elseBlock">
+        <ul>
+          <li *ngFor="let permission of clientpermission">{{permission.permission_name}}<br /><br /></li>
+        </ul>
+      </div>
+      <ng-template #elseBlock>
+        <div class="nopermi"> No Permission Found !</div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div mat-dialog-actions style="padding-left: 80%;">
+  <button mat-raised-button color="warn" (click)="onNoClick()">Exit</button>
+</div>

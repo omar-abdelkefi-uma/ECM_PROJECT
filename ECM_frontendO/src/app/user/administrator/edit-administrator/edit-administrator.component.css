@@ -1,0 +1,27 @@
+.example-card {
+max-width: 400px;
+}
+.scrollbox {
+	height: 245px;
+	overflow: auto;
+	visibility: hidden;
+}
+.scrollbox-content,
+.scrollbox:hover,
+.scrollbox:focus {
+	visibility: visible;
+}
+.scrollbox_delayed {
+	transition: visibility 3s;
+}
+.scrollbox_delayed:hover {
+	transition: visibility 0s 0.2s;
+}
+.linkdownload{
+	color: #f4f5f7;
+    font-weight: 550;
+    background: #11cdef;
+    padding: 7px;
+    padding-right: 14px;
+    padding-left: 14px;
+}

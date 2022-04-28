@@ -1,0 +1,91 @@
+<div class="d-flex flex-row h-100" style="overflow: hidden">
+  <div class="d-none d-lg-flex flex-column" *ngIf="showUserList && !userListCollapsed" [@fadeInOut]>
+    <!-- Tabs -->
+    <div class="border-right bg-light">
+      <div class="d-flex flex-row text-center p-2 border-bottom">
+        <button class="btn flex-fill text-primary">
+          <fa-icon [icon]="['fas','history']"></fa-icon>
+        </button>
+        <button class="btn flex-fill">
+          <fa-icon [icon]="['fas','address-book']"></fa-icon>
+        </button>
+        <button class="btn flex-fill">
+          <fa-icon [icon]="['fas','pencil-alt']"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <!-- Gruppenliste -->
+    <div class="user-list h-100 w-100 border-right bg-light" style="overflow-y: auto">
+      <vng-chat-group-list (activeGroupChanged)="activeGroup = $event"></vng-chat-group-list>
+    </div>
+  </div>
+  <div class="h-100 flex-fill">
+    <div class="chat-pane d-flex flex-column justify-content-start h-100">
+      <ng-container *ngIf="activeGroup; else noGroupSelected">
+        <div class="d-flex flex-row justify-content-between border-bottom m-0 p-2 bg-light align-items-center">
+          <button class="btn" (click)="userListCollapsed = !userListCollapsed">
+            <fa-icon [icon]="['fas','bars']"></fa-icon>
+          </button>
+          <!-- <img [src]="activeGroup.groupImageUrl" width="40" height="40" class="rounded-circle ml-2"> -->
+          <div class="chat-options flex-fill font-weight-bold ml-2 ">
+            {{ activeGroup.groupName }}
+          </div>
+          <div class="group-actions d-none d-lg-flex">
+            <ng-container *ngTemplateOutlet="groupActions; context: { asList: false }"></ng-container>
+          </div>
+          <div class="group-actions d-flex d-lg-none">
+            <button class="btn" [popover]="groupActions" container="body" containerClass="p-0 m-0">
+              <fa-icon [icon]="['fas','ellipsis-v']"></fa-icon>
+            </button>
+          </div>
+          <!-- <fa-icon [icon]="['fas','info']"></fa-icon> -->
+        </div>
+        <div class="chat-messages pb-3 justify-content-end h-100 text-center" style="overflow-y: auto" #chatmessages>
+          <vng-chat-group-messages [(group)]="activeGroup"></vng-chat-group-messages>
+        </div>
+        <div class="typing-indicator text-center text-muted pt-1 align-middle w-100">
+          <!-- <p class="user-typing small m-0">Marco writes <span>.</span><span>.</span><span>.</span></p>-->
+        </div>
+        <div class="chat-message-send border-top">
+          <vng-chat-textinput-bar></vng-chat-textinput-bar>
+        </div>
+      </ng-container>
+      <ng-template #noGroupSelected>
+        <div class="d-flex flex-fill align-items-center flex-column text-center align-self-stretch h-100">
+          <div class="my-auto text-muted">
+            <h5 class="mt-0">No group selected </h5>
+            Select a group to start or continue a conversation
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <!-- <div class="border-left p-0 bg-light">
+    <div class="d-flex flex-column text-center align-items-end">
+      <div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+</div>
+<ng-template #groupActions let-asList="asList">
+  <ng-container *ngIf="asList != null || asList == true">
+    <button class="btn" [class.disabled]="!groupAction.active" *ngFor="let groupAction of currentGroupActions">
+      <fa-icon [icon]="groupAction.icon"></fa-icon>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="!asList && asList == null">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-action" [class.disabled]="!groupAction.active"
+        *ngFor="let groupAction of currentGroupActions">
+        <fa-icon [icon]="groupAction.icon"></fa-icon>
+      </li>
+    </ul>
+  </ng-container>
+</ng-template>

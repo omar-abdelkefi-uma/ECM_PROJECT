@@ -1,0 +1,76 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--8">
+  <!-- Table -->
+  <br>
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h2 class="mb-0">Add ticket</h2>
+            </div>
+            <div class="col text-right">
+              <button mat-raised-button color="primary"> <span style="width: 130px;display: inline-block;">List
+                  ticket</span> </button>
+            </div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card>
+          <form [formGroup]="ticketgroup" class="form">
+            <div class="form">
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <input matInput placeholder="ticket Topic *" formControlName="ticketControl" name="tickettopic"
+                    [(ngModel)]="ticket.topic">
+                  <mat-error *ngIf="ticketgroup.get('ticketControl').invalid">ticket Topic is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="Project Name *" [compareWith]="objectComparisonFunction"
+                    [(ngModel)]="projectSelectedValue" id="projectname" formControlName="projectnameFormControl"
+                    name="projectname">
+                    <mat-option *ngFor="let project of projects" [value]="project">
+                      {{project.code}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="ticketgroup.get('projectnameFormControl').invalid">
+                    Project is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field style="width: 85%;">
+                  <mat-select placeholder="priority " [(ngModel)]="prioritySelectedValue" id="priorityselect"
+                    formControlName="priorityFormControl" name="priority">
+                    <mat-option *ngFor="let priority of  priorityTickets;" [value]="priority">
+                      {{priority}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="ticketgroup.get('priorityFormControl').invalid">
+                    priority is <strong> required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <br>
+            <mat-card-actions>
+              <div class="row justify-content-md-center ">
+                <button mat-raised-button color="primary" type="reset" style="background-color: #f5365c;"><span
+                    style="width: 130px;display: inline-block;">Reset</span></button>
+                <button mat-raised-button color="primary" (click)="Editticket()" type="submit"
+                  style="margin-left: 5%;"><span style="width: 130px;display: inline-block;">Edit</span> </button>
+              </div>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

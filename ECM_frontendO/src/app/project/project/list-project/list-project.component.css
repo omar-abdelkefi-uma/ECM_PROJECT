@@ -1,0 +1,54 @@
+/*all tabs*/
+.mat-card{
+    background: #f4f5f7;
+    padding: 0;
+}
+/*active label*/
+::ng-deep.mat-tab-label-active{
+   font-weight: bold;
+   color: #172b4d;
+}
+/*label*/
+::ng-deep.mat-tab-label{
+    min-width: 30%!important;
+}
+/*tab active color*/
+::ng-deep .mat-ink-bar {
+    background-color:#5e72e4 !important;
+}
+/*body content*/
+::ng-deep .mat-tab-body-wrapper{
+    background-color: #fff;
+    padding: 24px 14px 11px 18px;
+}
+table {
+    width: 100%;
+}
+td, th {
+    width: 25%;
+}
+th.mat-column-no{
+    background-color: #f4f5f7;
+}
+th.mat-column-name{
+    background-color: #f4f5f7;
+}
+th.mat-column-code{
+    background-color: #f4f5f7;
+}
+th.mat-column-option{
+    background-color: #f4f5f7;
+}
+#myInput {
+    background-image: url('../../../../assets/serachicon.png ');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 70%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}  
+.info{
+    color: #fb6340;
+}

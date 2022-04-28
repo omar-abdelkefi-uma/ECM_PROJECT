@@ -1,0 +1,189 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+  <!-------------------------------------------update-->
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <mat-card>
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Phase">
+              <div style="margin-bottom: 7px;">
+                <button mat-raised-button color="primary" (click)="addphase()"
+                  style="background-color: #172b4d;float: right;margin-right:30px;height: 50px;width: 159px;border-radius: 30px;">
+                  <mat-icon>add</mat-icon><span style="width: 91px;display: inline-block;">Add Phase</span>
+                </button>
+              </div>
+              <div class="container" style="clear: both;">
+                <div class="row" style="overflow-x: auto;flex-wrap: nowrap;display: -webkit-box;" cdkDropList
+                  [cdkDropListData]=" phaseListe" cdkDropListOrientation="horizontal" class="example-list1"
+                  (cdkDropListDropped)="dropPhases($event)">
+                  <div class="col-md-4 max-w" *ngFor="let phase of phaseListe,let i=index; " cdkDrag>
+                    <div class="section-heading" cdkDragHandle>
+                      {{phase.name }}
+                      <div>
+                        <i class="material-icons" title="edit phase" style="cursor: pointer;"
+                          (click)="editPhase(phase)"> edit
+                        </i>
+                        <i class="material-icons" title="delete phase" style="cursor: pointer; "
+                          (click)="deletePhase(phase)">
+                          delete </i>
+                      </div>
+                    </div>
+                    <div class="drag-container">
+                      <div cdkDropList id="{{phase.id}}" [cdkDropListData]="phase"
+                        [cdkDropListConnectedTo]="allPhasesId" (cdkDropListDropped)="drop($event)"
+                        style="min-height: 116px;">
+                        <div class="item-box" *ngFor="let item of phase.tasks" cdkDrag >
+                          <div>
+                            <span class="nametask">
+                              {{item.name}}
+                            </span>
+                           
+                            <div class="menutask">
+                              <div>
+                                <a class="menu-action" [matMenuTriggerFor]="menu">
+                                  <!---open mecu-->
+                                  <i class="material-icons">more_vert</i>
+                                </a>
+                                <mat-menu #menu="matMenu" class="aallmenu" >
+                                  <button mat-menu-item (click)="edittask(item,phase)">
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Edit</span>
+                                  </button>
+                                  <button mat-menu-item (click)="consulttask(item,phase)">
+                                    <mat-icon>visibility</mat-icon>
+                                    <span>Consult</span>
+                                  </button>
+                                  <button mat-menu-item (click)="refusetask(item,phase)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Refuse</span>
+                                  </button>
+                                  <button mat-menu-item (click)="deletetask(item,phase)">
+                                    <mat-icon>delete_forever</mat-icon>
+                                    <span>Delete</span>
+                                  </button>
+                                </mat-menu>
+                              </div>
+                            </div>
+                            <!--stopPropagation(disabl drag)-->
+                            <div class="slider" (mousedown)="$event.stopPropagation()">
+                              <mat-slider
+                              class="slideritem"
+                              [disabled]="disabled"
+                              [invert]="invert"
+                              [max]="max"
+                              [min]="min"
+                              [step]="step"
+                              [thumbLabel]="thumbLabel"
+                              [tickInterval]="getSliderTickInterval()"
+                              [(ngModel)]="item.level"
+                              [vertical]="vertical"
+                              color="primary"
+                              aria-labelledby="example-name-label">
+                            </mat-slider>
+                            <span class="value">
+                                {{item.level}} %
+                            </span>
+                            </div>
+                            <div class="avatoremployee">
+                              <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                              </div>
+                              <ng-template #Block>
+                                <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                                  size="50"></ngx-avatar>
+                              </ng-template>
+                              <ng-template #elseBlock>
+                                <ngx-avatar size="29" name="{{item.employee.fullname}}" value="50%"></ngx-avatar>
+                              </ng-template>
+                            </div>
+                            <div class="emailemploye">
+                              <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                              <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                                <div class="material-icons" style="max-width: 100%;">mail outline</div>
+                              </a>
+                              <!---start-->
+                              <div class="material-icons">alarm</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="add-task" (click)="addtask(phase)">+ <span>Task</span></div>
+                    </div>
+                  </div>
+                </div>
+                <!--------------------refused phase-->
+                <div style="width: 49.5%;margin: auto;">
+                  <div class="section-heading" cdkDragHandle>
+                    Refused tasks
+                    <div>
+                    </div>
+                  </div>
+                  <div class="drag-container" style="width: 487px;min-height: 290px;">
+                    <div class="item-box" *ngFor="let item of phaserefused.tasks">
+                      <div>
+                        <span class="nametask">
+                          {{item.name}}
+                        </span>
+                        <div class="menutask">
+                          <div>
+                            <a class="menu-action" [matMenuTriggerFor]="menu">
+                              <!---open mecu-->
+                              <i class="material-icons">more_vert</i>
+                            </a>
+                            <mat-menu #menu="matMenu" class="aallmenu">
+                              <button mat-menu-item (click)="consulttask(item,phaserefused)">
+                                <mat-icon>visibility</mat-icon>
+                                <span>Consult</span>
+                              </button>
+                              <button mat-menu-item (click)="deletetask(item,phaserefused)">
+                                <mat-icon>delete_forever</mat-icon>
+                                <span>Delete</span>
+                              </button>
+                              <button mat-menu-item (click)="returntask(item,phaserefused)">
+                                <mat-icon>delete_forever</mat-icon>
+                                <span>Return to phase</span>
+                              </button>
+                            </mat-menu>
+                          </div>
+                        </div>
+                        <div class="avatoremployee">
+                          <div *ngIf="project.progress!=null ;then elseBlock else Block">
+                          </div>
+                          <ng-template #Block>
+                            <ngx-avatar class="clickable" [round]="true" src="{{'data:image/jpg;base64,'+element}}"
+                              size="50"></ngx-avatar>
+                          </ng-template>
+                          <ng-template #elseBlock>
+                            <ngx-avatar size="29" name="omar abde " value="50%"></ngx-avatar>
+                          </ng-template>
+                        </div>
+                        <div class="emailemploye">
+                          <!-----redirect to gmail to  <a href="mailto:{{person.email}} "> -->
+                          <a href="mailto:omarabdelkefi130@gmail.com " style="color: #9c27b0; width: 36px;">
+                            <div class="material-icons" style="max-width: 100%;">mail outline</div>
+                          </a>
+                          <!---start-->
+                          <div class="material-icons">alarm</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Type Task">
+              <app-list-type-task></app-list-type-task>
+            </mat-tab>
+            <mat-tab label="Priority Task">
+              <app-list-priority-task></app-list-priority-task>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <!--<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>-->
