@@ -32,7 +32,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
   //Reading the full response { observe: 'response' }
-  login(username, password, rememberMe): Observable<boolean> {
+  login(username, password, rememberMe): Observable<any> {
     return this.http.post('http://localhost:8080/authenticate', { username: username, password: password }, { observe: 'response' })
       .pipe(
         map(response => {
@@ -62,7 +62,7 @@ export class AuthenticationService {
             //failed authentication
             return false;
           }
-        }), catchError((e: any) => Observable.throw(this.errorHandler(e)))
+        }),
       )
   }
   errorHandler(error: any): void {

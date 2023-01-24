@@ -1,0 +1,16 @@
+server:
+  port: 8095
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  
+
+ecm:
+  log:
+    path: C:/ECM_PROJECT/ecm/discovery

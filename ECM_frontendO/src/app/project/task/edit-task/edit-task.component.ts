@@ -11,6 +11,9 @@ export interface DialogData {
   styleUrls: ['./edit-task.component.scss']
 })
 export class EditTaskComponent implements OnInit {
+  employeeSelectedValue:any;
+  employees:any;
+  typetasks:any;
   constructor(private fb: FormBuilder,public dialogRef: MatDialogRef<EditTaskComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.projectgroup = this.fb.group({
       nameFormControl: ['', [Validators.required]],

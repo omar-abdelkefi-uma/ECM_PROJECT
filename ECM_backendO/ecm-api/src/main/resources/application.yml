@@ -1,0 +1,46 @@
+server:
+  port: 8092
+
+info:
+  app:
+    name: ${spring.application.name}
+eureka:
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8095/eureka
+  instance:
+    appname: ${spring.application.name}
+    prefer-ip-address: true
+
+ecm:
+  log:
+    path: C:/ECM_PROJECT/ecm/gateway
+
+spring:
+    application:
+      name: gateway-service
+    cloud:
+      gateway:
+        discovery:
+          locator:
+            enabled: true
+            lower-case-service-id: true
+        globalcors:
+          add-to-simple-url-handler-mapping: true
+          cors-configurations:
+            '[/**]':
+              allowedOriginPatterns: "*"
+              allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              allowedHeaders:
+              - Authorization
+              - Content-type
+              - x-requested-with
+              maxAge: 3600
+          
