@@ -7,7 +7,7 @@ can contact the managers of their projects.
 <h2>Backend Technologies:</h2>
 <ul>
 <li>Spring Boot</li>
-<li>Java 11</li>
+<li>Java 17</li>
 <li>JPA</li>
 <li>REST API</li>
 <li>SMTP protocol</li>
