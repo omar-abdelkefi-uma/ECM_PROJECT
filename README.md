@@ -23,6 +23,7 @@ can contact the managers of their projects.
 <li>Bootstrap</li>
 <li>CSS</li>
 <li>HTML</li>
+<li>Node 14.15.5</li>
 </ul>
 
 <h2>Database:</h2>
