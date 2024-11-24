@@ -1,4 +1,4 @@
-# ECM_PROJECT
+# ECM_PROJECT (you can clone project and see video)
 This project consist of the design and the realization of a web application making it possible to offer the main functions of effective project management.
 It allows to make the link between the client and the project managers. Employees, according to their roles, manage their personal space . clients also manage their personal 
 spaces. They will have the opportunity to follow the realization of their projects in real time. They can even declare new tickets or validate those already resolved as they
