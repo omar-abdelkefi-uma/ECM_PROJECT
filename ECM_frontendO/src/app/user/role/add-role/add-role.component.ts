@@ -114,10 +114,9 @@ export class AddRoleComponent implements OnInit {
         }
       });
       this.roleService.createRole(this.role)
-        .subscribe(data => console.log(data), error => console.log(error));
-      this.router.navigate(['/alluser/listrole']);
+        .subscribe(data => this.router.navigate(['/alluser/listrole']), error => console.log(error));
+      
     }
-    this.router.navigate(['/alluser/listrole']);
   }
   rolegroup: FormGroup;
   description: string;

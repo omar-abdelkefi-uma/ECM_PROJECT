@@ -31,7 +31,7 @@ export class AdministratorComponent implements OnInit {
   select(p: string) {
     this.selected = p;
     if (this.selected == "All societies") {
-      this.filteradministrators = this.administrators.filter(admin => admin.superadmin == true);
+      this.filteradministrators = this.administrators;
       this.dataSource.data = this.filteradministrators;
     } else {
       this.filteradministrators = [];
@@ -57,7 +57,7 @@ export class AdministratorComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.administrators = data;
-        this.filteradministrators = this.administrators.filter(admin => admin.superadmin == true);
+        this.filteradministrators = this.administrators;
         this.dataSource = new MatTableDataSource<Administrator>(this.filteradministrators);
         this.dataSource.data = this.filteradministrators;
         this.dataSource.paginator = this.paginator;

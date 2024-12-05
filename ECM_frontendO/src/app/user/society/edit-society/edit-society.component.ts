@@ -117,7 +117,7 @@ export class EditSocietyComponent implements OnInit {
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
             this.society.logo = new Alias();
-            this.society.logo.imageid = this.cardImageBase64.substring(23);
+            this.society.logo.imageid = this.cardImageBase64.split(',')[1];
           }
         };
       };

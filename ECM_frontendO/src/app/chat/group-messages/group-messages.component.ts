@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { of } from 'rxjs'
 import { User } from 'src/app/models/user/user';
-import { Message } from 'src/app/models/message/Message';
+import { Message } from 'src/app/models/message/message';
 import { MessageService } from 'src/app/services/message/message.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { ChatService } from 'src/app/services/message/chat.service';
-import { Recipient } from 'src/app/models/message/Recipient';
+import { Recipient } from 'src/app/models/message/recipient';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
 @Component({
   selector: 'vng-chat-group-messages',

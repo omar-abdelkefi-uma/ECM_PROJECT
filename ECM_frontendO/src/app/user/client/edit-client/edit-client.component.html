@@ -83,7 +83,7 @@
 							</div>
 							<div class=" col-md-6">
 								<mat-form-field class="example-form ">
-									<input matInput placeholder="firstname & lasname *" id="fullname"
+									<input matInput placeholder="firstname & lasname"  id="fullname"
 										[formControl]="fullnameControl" name="firstname" [(ngModel)]="client.fullname">
 									<mat-error *ngIf="fullnameControl.hasError('required')">
 										Fullname is <strong> required</strong>
@@ -108,7 +108,7 @@
 							</div>
 							<div class="col-md-6">
 								<mat-form-field class="example-form">
-									<mat-select placeholder="Sexe *" [formControl]="sexeControl" name="gender"
+									<mat-select placeholder="Sexe"  [formControl]="sexeControl" name="gender"
 										[(ngModel)]="client.gender">
 										<mat-option *ngFor="let etat of sexe" [value]="etat.value">
 											{{etat.viewValue}}
@@ -123,7 +123,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<mat-form-field class="example-form">
-									<input matInput placeholder="Cin *" maxlength="8" [formControl]="cinControl"
+									<input matInput placeholder="Cin"  maxlength="8" [formControl]="cinControl"
 										name="cin" [(ngModel)]="client.cin">
 									<mat-error
 										*ngIf="cinControl.hasError('pattern') && !cinControl.hasError('required')">

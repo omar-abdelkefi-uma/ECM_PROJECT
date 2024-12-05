@@ -30,3 +30,13 @@ can contact the managers of their projects.
 <ul>
 <li>MySQL</li>
 </ul>
+
+<ul>to run app back in docker 
+<li>1)go to ECM_PROJECT\ECM_backendO\ and run mvn compile jib:dockerBuild</li>
+<li>2)go to dockercompose folder and run docker compose up </li></ul>
+
+
+<ul>to run app front in docker 
+<li>1)go to ECM_PROJECT\ECM_frontendO  and docker build -t ecm-front .</li>
+<li>2)docker run -d -p 4200:80 app-front </li>
+<li>go to http://localhost:4200/</li></ul>

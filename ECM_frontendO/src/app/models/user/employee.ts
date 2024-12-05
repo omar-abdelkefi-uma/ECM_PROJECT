@@ -1,4 +1,4 @@
-import { Department } from "./Department";
+import { Department } from "./department";
 import { Experience } from "./experience";
 import { User } from "./user";
 

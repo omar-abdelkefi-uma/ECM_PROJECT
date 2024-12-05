@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+<div class="header bg-gradient-light pb-8 pt-5 pt-md-6">
   <!-------------------------------------------update-->
 </div>
 <!-- Page content -->
@@ -25,7 +25,7 @@
             <div class="form">
               <div class="row">
                 <mat-form-field style="width: 85%;">
-                  <input matInput placeholder="project Code *" formControlName="projectControl" name="projectcode"
+                  <input matInput placeholder="project Code"  formControlName="projectControl" name="projectcode"
                     [(ngModel)]="project.code">
                   <mat-error *ngIf="projectgroup.get('projectControl').invalid">project Code is required
                   </mat-error>
@@ -33,7 +33,7 @@
               </div>
               <div class="row">
                 <mat-form-field style="width: 85%;">
-                  <input matInput placeholder="project Name *" formControlName="projectnameControl" name="projectname"
+                  <input matInput placeholder="project Name"  formControlName="projectnameControl" name="projectname"
                     [(ngModel)]="project.name">
                   <mat-error *ngIf="projectgroup.get('projectnameControl').invalid">project name is required
                   </mat-error>

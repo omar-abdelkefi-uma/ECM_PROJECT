@@ -21,10 +21,10 @@
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
               <img style="height: 100%;width: 100%;" *ngIf="user.imageprofile!=null"  src="{{'data:image/jpg;base64,'+user.imageprofile.imageid}}">
-              <img style="height: 100%;width: 100%;" *ngIf="user.imageprofile == null"   src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png">
+              <img style="height: 100%;width: 100%;" *ngIf="user.imageprofile == null"   src="../../../assets/profile.png">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">{{user.fullname}}</span>
+              <span class="mb-0 text-sm  font-weight-bold" style="color: white;">{{user.fullname}}</span>
             </div>
           </div>
         </a>
@@ -49,7 +49,7 @@
             <span>Support</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a [routerLink]="['/user/login']" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>

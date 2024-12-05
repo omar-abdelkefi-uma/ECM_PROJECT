@@ -1,0 +1,42 @@
+services:
+  ecmdb:
+    container_name: ecmdb
+    ports:
+      - 3300:3306
+    environment:
+      MYSQL_DATABASE: ecmdb
+    extends:
+      file: common-config.yml
+      service: microservice-db-config
+
+
+  ecms:
+    image: "ecm-api"
+    container_name: ecm-ms
+    ports:
+      - "8092:8092"
+      - "587:587"
+    environment:
+      SPRING_APPLICATION_NAME: "ecm-api"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://ecmdb:3306/ecmdb"
+    depends_on:
+      ecmdb:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+      
+  ecm-front:
+    image: "ecm-front"
+    container_name: ecm-front
+    ports:
+      - "4000:80"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+  
+
+networks:
+  ecm-network:
+    driver: "bridge"

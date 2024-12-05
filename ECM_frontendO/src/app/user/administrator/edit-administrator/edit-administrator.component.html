@@ -1,7 +1,7 @@
 <div class="header pb-5 pt-5 pt-lg-5 d-flex align-items-center"
 	style="min-height: 200px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
 	<!-- Mask -->
-	<span class="mask bg-gradient-danger opacity-8"></span>
+	<span class="mask bg-gradient-light opacity-8"></span>
 	<!-- Header container -->
 	<!---min-height==>height of header -->
 </div>
@@ -69,7 +69,7 @@
 				<div class="card-body">
 					<!----------------------------in body-->
 					<form (ngSubmit)="update()">
-						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;">User
+						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;font-size: 1.2rem;">User
 							information</h6>
 						<ng-template matStepLabel>Informations De Base</ng-template>
 						<div class="row">
@@ -88,7 +88,7 @@
 							</div>
 							<div class=" col-md-6">
 								<mat-form-field class="example-form ">
-									<input matInput placeholder="firstname & lasname *" id="fullname"
+									<input matInput placeholder="firstname & lasname"  id="fullname"
 										[formControl]="fullnameControl" name="firstname"
 										[(ngModel)]="administrator.fullname">
 									<mat-error *ngIf="fullnameControl.hasError('required')">
@@ -115,7 +115,7 @@
 							</div>
 							<div class="col-md-6">
 								<mat-form-field class="example-form">
-									<mat-select placeholder="Sexe *" [formControl]="sexeControl" name="gender"
+									<mat-select placeholder="Sexe"  [formControl]="sexeControl" name="gender"
 										[(ngModel)]="administrator.gender">
 										<mat-option *ngFor="let etat of sexe" [value]="etat.value">
 											{{etat.viewValue}}
@@ -130,7 +130,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<mat-form-field class="example-form">
-									<input matInput placeholder="Cin *" maxlength="8" [formControl]="cinControl"
+									<input matInput placeholder="Cin"  maxlength="8" [formControl]="cinControl"
 										name="cin" [(ngModel)]="administrator.cin">
 									<mat-error
 										*ngIf="cinControl.hasError('pattern') && !cinControl.hasError('required')">
@@ -189,7 +189,7 @@
 						</div>
 						<hr class="my-4" />
 						<!-- Address -->
-						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;">
+						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;font-size: 1.2rem;">
 							Documents</h6>
 						<div *ngFor="let doc of documents;index as i">
 							<div class="row">
@@ -200,7 +200,7 @@
 										<a class="linkdownload" style="margin-right: 7px;"
 											href="{{urlServer}}api/administrator/displayfile/{{doc.id}}"
 											target="_blank">
-											<mat-icon aria-hidden="false" aria-label="Example home icon"><span
+											<mat-icon aria-hidden="false" aria-label="Example home icon" style="padding-top:5px"><span
 													class="material-icons">
 													visibility
 												</span></mat-icon>
@@ -215,7 +215,7 @@
 						</div>
 						<hr class="my-4" />
 						<!-- Address -->
-						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;">
+						<h6 class="heading-small text-muted mb-2" style="display: flex;justify-content: center;font-size: 1.2rem;">
 							Experiences</h6>
 						<div *ngFor="let exp of experiences;index as i">
 							<div class="row">

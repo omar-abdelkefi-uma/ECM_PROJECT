@@ -2,7 +2,7 @@ import { Image } from "./image";
 import { Role } from "./role";
 
 import {Document} from "./document";
-import { Message } from "../message/Message";
+import { Message } from "../message/message";
 
 export class User{
     id:number;

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipient } from 'src/app/models/message/Recipient';
+import { Recipient } from 'src/app/models/message/recipient';
 import { User } from 'src/app/models/user/user';
 import { MessageService } from 'src/app/services/message/message.service';
 import { RecipientService } from 'src/app/services/message/recipient.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
-import {Message} from '../../models/message/Message';
+import {Message} from '../../models/message/message';
 @Component({
   selector: 'app-dashboad',
   templateUrl: './dashboad.component.html',

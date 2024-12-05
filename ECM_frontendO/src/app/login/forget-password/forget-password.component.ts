@@ -9,10 +9,10 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-  errorMessage: string;
-  username :string; 
+  message: string;
+  username: string;
   reactiveForm: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router,private auth:AuthenticationService) { 
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthenticationService) {
     this.reactiveForm = this.fb.group({
       username: ['', [Validators.required]],
     });
@@ -21,13 +21,13 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  resetPass(){
-    this.router.navigate(['user/login/' + this.errorMessage]);
+  resetPass() {
+
     this.auth.resetPassword(this.username).subscribe(
       (response) => {
-        this.errorMessage = "un email a été envoyé, veuillez vérifier votre email s'il vous plaît"
-     
-        });
-  
-    }
+        this.message = "an email has been sent, please check your email"
+        this.router.navigate(['user/login/' + this.message]);
+      });
+
+  }
 }

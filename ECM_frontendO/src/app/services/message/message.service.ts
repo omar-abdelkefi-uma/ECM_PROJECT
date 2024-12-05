@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Message } from '../../models/message/Message'
+import { Message } from '../../models/message/message'
 @Injectable({
   providedIn: 'root'
 })

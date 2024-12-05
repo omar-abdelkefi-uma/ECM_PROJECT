@@ -11,7 +11,7 @@ import { RoleService } from 'src/app/services/user/role.service';
 import icons from 'glyphicons';
 import { Employee } from 'src/app/models/user/employee';
 import { EmployeeService } from 'src/app/services/user/employee.service';
-import { Department } from 'src/app/models/user/Department';
+import { Department } from 'src/app/models/user/department';
 import { DepartmentService } from 'src/app/services/user/department.service';
 @Component({
   selector: 'app-add-employee',
@@ -180,9 +180,7 @@ export class AddEmployeeComponent implements OnInit {
   clickdelete(i): void {
     this.listExp.splice(i, 1);
   }
-  checkisprojectman() {
-    this.isprojectmanager = !this.isprojectmanager;
-  }
+
   /*-----------------------------------------step 3------------------------------------------*/
   /*########################## File Upload ########################*/
   fileChangeEvent(fileInput: any) {
@@ -218,7 +216,7 @@ export class AddEmployeeComponent implements OnInit {
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
             this.Employee.imageprofile = new Alias();
-            this.Employee.imageprofile.imageid = this.cardImageBase64.substring(23);
+            this.Employee.imageprofile.imageid = this.cardImageBase64.split(',')[1];
           }
         };
       };
@@ -228,7 +226,6 @@ export class AddEmployeeComponent implements OnInit {
   AddEmployee() {
     this.Employee.projectmanager = this.isprojectmanager;
     this.Employee.departments = this.departmentSelectedValue;
-    debugger;
     this.roles.forEach(role => {
       //RoleSelectedValue ==>le nom du role selected
       if (role.id == this.RoleSelectedValue) {
@@ -242,15 +239,13 @@ export class AddEmployeeComponent implements OnInit {
     });
     this.Employee.experiences = this.listExp;
     formData.append('employee', JSON.stringify(this.Employee));
-    debugger;
+
     this.Employeeservice.addEmployee(formData)
       .subscribe(data => {
-        debugger;
         console.log(data);
         this.router.navigate(["/alluser/employee"]);
       },
         error => {
-          debugger;
           console.log(error);
         }
       );

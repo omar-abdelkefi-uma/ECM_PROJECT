@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { StorageService } from 'src/app/services/storage.service';
 import { WebsocketService } from 'src/app/services/websocket/websocket.service';
-import { Message } from 'src/app/models/message/Message';
+import { Message } from 'src/app/models/message/message';
 import { ChatService } from 'src/app/services/message/chat.service';
 
 @Component({

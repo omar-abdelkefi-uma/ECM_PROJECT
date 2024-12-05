@@ -25,3 +25,7 @@ max-width: 400px;
     padding-right: 14px;
     padding-left: 14px;
 }
+
+.card-header{
+	padding: 0.5rem 1.5rem;
+}

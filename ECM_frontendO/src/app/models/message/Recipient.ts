@@ -1,5 +1,5 @@
 import { User } from "../user/user";
-import { Message } from "./Message";
+import { Message } from "./message";
 
 export class Recipient {
     id:Number;

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Department } from 'src/app/models/user/Department';
+import { Department } from 'src/app/models/user/department';
 import { DepartmentService } from 'src/app/services/user/department.service';
 import { AddDepartmentComponent } from '../add-department/add-department.component';
 import { DeleteDepartmentComponent } from '../delete-department/delete-department.component';

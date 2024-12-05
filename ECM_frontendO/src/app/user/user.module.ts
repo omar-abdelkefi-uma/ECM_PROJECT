@@ -19,14 +19,13 @@ import { DeleteRoleComponent } from './role/delete-role/delete-role.component';
 
 import { TakeImageComponent } from './images/take-image/take-image.component';
 import { AddImageComponent } from './images/add-image/add-image.component';
-import { WebcamModule } from 'ngx-webcam';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ProgressComponent } from './images/progress/progress.component';
 import { GalleryModule } from '@ks89/angular-modal-gallery'; // 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { CarouselModule, ModalModule, WavesModule,ButtonsModule } from 'angular-bootstrap-md';
+import { CarouselModule, ModalModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { AddDepartmentComponent } from './department/add-department/add-department.component';
 import { DeleteDepartmentComponent } from './department/delete-department/delete-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
@@ -45,15 +44,15 @@ import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.co
 import { ProfileEmployeeComponent } from './employee/profile-employee/profile-employee.component';
 @NgModule({
   declarations: [
-    
-    AdministratorComponent, AddAdministratorComponent,EditAdministratorComponent,
-    ClientComponent,AddClientComponent,
-    EmployeeComponent,AddEmployeeComponent,
-    ListRoleComponent, AddRoleComponent, EditRoleComponent, ViewRoleComponent,ProgressComponent ,
-     ProfileAdministratorComponent, DeleteRoleComponent, AddImageComponent,TakeImageComponent, AddDepartmentComponent, DeleteDepartmentComponent, EditDepartmentComponent, ViewDepartmentComponent, AddSocietyComponent, DeleteSocietyComponent, ListSocietyComponent, ViewSocietyComponent, EditSocietyComponent, ListDepartmentComponent, SafehtmlPipe, DeleteComponent, EditClientComponent, ProfileClientComponent, EditEmployeeComponent, ProfileEmployeeComponent],
+
+    AdministratorComponent, AddAdministratorComponent, EditAdministratorComponent,
+    ClientComponent, AddClientComponent,
+    EmployeeComponent, AddEmployeeComponent,
+    ListRoleComponent, AddRoleComponent, EditRoleComponent, ViewRoleComponent, ProgressComponent,
+    ProfileAdministratorComponent, DeleteRoleComponent, AddImageComponent, TakeImageComponent, AddDepartmentComponent, DeleteDepartmentComponent, EditDepartmentComponent, ViewDepartmentComponent, AddSocietyComponent, DeleteSocietyComponent, ListSocietyComponent, ViewSocietyComponent, EditSocietyComponent, ListDepartmentComponent, SafehtmlPipe, DeleteComponent, EditClientComponent, ProfileClientComponent, EditEmployeeComponent, ProfileEmployeeComponent],
   imports: [
-    CommonModule,FileSaverModule, GalleryModule.forRoot() ,MDBBootstrapModule, CarouselModule, ModalModule, WavesModule,ButtonsModule ,
-    UserRoutingModule, SharedmModule,WebcamModule,FlexLayoutModule
+    CommonModule, FileSaverModule, GalleryModule.forRoot(), MDBBootstrapModule, CarouselModule, ModalModule, WavesModule, ButtonsModule,
+    UserRoutingModule, SharedmModule, FlexLayoutModule
   ]
 })
 export class UserModule { }

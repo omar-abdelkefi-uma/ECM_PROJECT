@@ -42,19 +42,7 @@ export class AddTaskComponent implements OnInit {
     });
   }
   ngAfterViewInit() {
-    $(document).ready(function () {
-    })
-    /*  $(document).on("pageLoaded", function (){
-        console.log("pageLoaded");
-            $("#body").summernote({
-                height: '200px',
-                callbacks: {
-                    onChange: function(contents, $editable) {
-                        $("#body").val(contents);
-                    }
-                }
-            });
-      });*/
+    
   }
   public duration: string;
   ngOnInit(): void {

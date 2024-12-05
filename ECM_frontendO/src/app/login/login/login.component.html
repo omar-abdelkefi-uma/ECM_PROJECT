@@ -6,6 +6,9 @@
     <div *ngIf="errorMessage" class="alert alert-warning" role="alert">
       <strong>{{errorMessage}}</strong>
     </div>
+    <div *ngIf="message" class="alert alert-success" role="alert">
+      <strong>{{message}}</strong>
+    </div>
     <mat-card-content>
       <form class="matero-form-horizontal" [formGroup]="reactiveForm">
         <mat-form-field appearance="outline" style="width: 100%;">

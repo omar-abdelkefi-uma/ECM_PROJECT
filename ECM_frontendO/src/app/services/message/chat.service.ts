@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { timer } from 'rxjs';
-import { Message } from 'src/app/models/message/Message';
+import { Message } from 'src/app/models/message/message';
 @Injectable({
   providedIn: 'root'
 })

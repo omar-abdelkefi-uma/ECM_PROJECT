@@ -44,9 +44,7 @@ export class ListTaskComponent implements OnInit {
     this.titleService.setTitle("Task | ECM");
   }
   ngAfterViewInit() {
-    $(document).ready(function () {
-      // $("p").css("background-color", "yellow");
-    })
+
   }
   ngOnInit(): void {
     this.reloaddata();

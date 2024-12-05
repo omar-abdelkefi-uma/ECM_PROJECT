@@ -2,7 +2,7 @@ import { ChangeDetectorRef, ElementRef, Inject, ViewChild } from '@angular/core'
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Department } from 'src/app/models/user/Department';
+import { Department } from 'src/app/models/user/department';
 import { Society } from 'src/app/models/user/society';
 import { SocietyService } from 'src/app/services/user/society.service';
 export interface DialogData {

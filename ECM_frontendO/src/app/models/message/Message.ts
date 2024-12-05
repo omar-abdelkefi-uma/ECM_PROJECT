@@ -1,6 +1,6 @@
 import {Document} from "../user/document";
 import { User } from "../user/user";
-import { Recipient } from "./Recipient";
+import { Recipient } from "./recipient";
 export class Message {
     id:Number;
     content:string;

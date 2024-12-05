@@ -1,24 +1,22 @@
-<div style="width: 400px ;height: 525px;">
-  <h1 mat-dialog-title style="color: crimson;">Add society</h1>
+<div style="width: 400px; height: 525px;">
+  <h1 mat-dialog-title style="color: crimson;">Add Society</h1>
   <mat-form-field class="col">
-    <input matInput placeholder="Company name *" id="name" [formControl]="FormControl" name="name"
+    <input matInput placeholder="Company Name"  id="name" [formControl]="FormControl" name="name"
       [(ngModel)]="society.name">
     <mat-error *ngIf="FormControl.hasError('required')">
-      Name is<strong> required</strong>
+      Name is <strong>required</strong>
     </mat-error>
   </mat-form-field>
   <br>
   <mat-form-field class="col">
-    <input matInput placeholder="Email *" id="email" name="email" [(ngModel)]="society.email">
+    <input matInput placeholder="Email"  id="email" name="email" [(ngModel)]="society.email">
   </mat-form-field>
   <br>
-  <!------------------------------------------city-->
+  <!------------------------------------------City-->
   <mat-form-field class="col">
     <mat-select placeholder="City" [formControl]="villeControl" name="city" [(ngModel)]="society.city">
       <mat-option>-- None --</mat-option>
       <mat-optgroup *ngFor="let group of villeGroups" [label]="group.name">
-        <!--<mat-optgroup *ngFor="let group of villeGroups" [label]="group.name"
-                        [disabled]="group.disabled">-->
         <mat-option *ngFor="let ville of group.ville" [value]="ville.value">
           {{ ville.viewValue }}
         </mat-option>
@@ -27,15 +25,15 @@
   </mat-form-field>
   <br>
   <mat-form-field class="col">
-    <mat-label>Company address</mat-label>
-    <input matInput input matInput placeholder="Address " name="address" [(ngModel)]="society.address">
+    <mat-label>Company Address</mat-label>
+    <input matInput placeholder="Address" name="address" [(ngModel)]="society.address">
   </mat-form-field><br>
-  <!--------------------------------------phone-->
+  <!--------------------------------------Phone-->
   <mat-form-field class="col">
     <span matPrefix>+216 &nbsp;</span>
-    <input matInput placeholder="phone " [formControl]="TelControl" name="phone" [(ngModel)]="society.phone">
+    <input matInput placeholder="Phone" [formControl]="TelControl" name="phone" [(ngModel)]="society.phone">
     <mat-error *ngIf="TelControl.hasError('required')">
-      Phone is <strong> required</strong>
+      Phone is <strong>required</strong>
     </mat-error>
     <mat-icon matSuffix>
       <i class="material-icons">perm_phone_msg</i>
@@ -45,18 +43,18 @@
   <!------------------------------------------------Fax-->
   <mat-form-field class="col">
     <span matPrefix>+216 &nbsp;</span>
-    <input matInput placeholder="Fax " [formControl]="FaxControl" name="Fax" [(ngModel)]="society.fax">
+    <input matInput placeholder="Fax" [formControl]="FaxControl" name="fax" [(ngModel)]="society.fax">
     <mat-error *ngIf="FaxControl.hasError('required')">
-      Phax is <strong> required</strong>
+      Fax is <strong>required</strong>
     </mat-error>
     <mat-icon matSuffix>
       <i class="material-icons">perm_phone_msg</i>
     </mat-icon>
   </mat-form-field>
   <br>
-  <!------------------------------------------------postal code-->
+  <!------------------------------------------------Postal Code-->
   <mat-form-field class="col">
-    <input matInput placeholder="Code Postal " name="postalcode" [(ngModel)]="society.postalCode">
+    <input matInput placeholder="Postal Code" name="postalCode" [(ngModel)]="society.postalCode">
   </mat-form-field>
   <div class="row custom-wrapper">
     <div class="col-md-12">

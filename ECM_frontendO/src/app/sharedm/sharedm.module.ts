@@ -37,6 +37,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 import { ReactiveFormsModule  } from '@angular/forms';
 import { AvatarModule } from 'ngx-avatar';
+import { BadgeModule } from 'angular-bootstrap-md';
 
 
 
@@ -52,7 +53,7 @@ import { AvatarModule } from 'ngx-avatar';
     MatProgressSpinnerModule,MatProgressBarModule,MatDialogModule,
     MatTooltipModule,MatSnackBarModule,MatTableModule,  MatSortModule,MatPaginatorModule,
     MatNativeDateModule,
-    AvatarModule,
+    AvatarModule,BadgeModule
   ],
   exports:[
     FormsModule, ReactiveFormsModule,
@@ -62,7 +63,7 @@ import { AvatarModule } from 'ngx-avatar';
     MatTabsModule, MatExpansionModule, MatButtonToggleModule,MatChipsModule, MatIconModule,
     MatProgressSpinnerModule,MatProgressBarModule,MatDialogModule,
     MatTooltipModule,MatSnackBarModule,MatTableModule,  MatSortModule,MatPaginatorModule,
-    MatNativeDateModule,AvatarModule,
+    MatNativeDateModule,AvatarModule,BadgeModule
 
   ]
 })

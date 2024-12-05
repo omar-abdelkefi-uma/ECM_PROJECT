@@ -218,7 +218,7 @@ export class AddAdministratorComponent implements OnInit {
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
             this.administrator.imageprofile = new Alias();
-            this.administrator.imageprofile.imageid = this.cardImageBase64.substring(23);
+            this.administrator.imageprofile.imageid = this.cardImageBase64.split(',')[1];
           }
         };
       };

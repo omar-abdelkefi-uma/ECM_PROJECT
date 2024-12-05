@@ -2,7 +2,7 @@
   padding: 9px 10px 5px 92px;
   font-weight: bold;
   position: relative;
-  background-color: #999999c7;
+  background-color: #bdbbad;
   font-size: 21px;
   display: flex;
   height: 50px;
@@ -18,7 +18,7 @@
   margin: 18px 25px 25px 0;
   display: inline-block;
   vertical-align: top;
-  background-color: #eee;
+  background-color: #a39e74;
   padding: 15px;
   border-radius: 5px;
 }
@@ -99,7 +99,7 @@ color: #00000080;
 /*active label*/
 ::ng-deep.mat-tab-label-active{
  font-weight: bold;
- color: #172b4d;
+ color: #fff;
 }
 /*label*/
 ::ng-deep.mat-tab-label{
@@ -107,7 +107,7 @@ color: #00000080;
 }
 /*tab active color*/
 ::ng-deep .mat-ink-bar {
-  background-color:#5e72e4 !important;
+  background-color:#748ca3 !important;
 }
 /*body content*/
 ::ng-deep .mat-tab-body-wrapper{

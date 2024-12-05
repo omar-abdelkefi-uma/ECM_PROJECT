@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+declare var $: any;
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',

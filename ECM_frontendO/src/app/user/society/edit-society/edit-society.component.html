@@ -1,7 +1,7 @@
 <div style="width: 400px ;height: 525px;">
   <h1 mat-dialog-title style="color: crimson;">Edit society</h1>
   <mat-form-field class="col">
-    <input matInput placeholder="Company name *" id="name" [formControl]="FormControl" name="name"
+    <input matInput placeholder="Company name"  id="name" [formControl]="FormControl" name="name"
       [(ngModel)]="society.name">
     <mat-error *ngIf="FormControl.hasError('required')">
       Name is <strong> required</strong>
@@ -9,7 +9,7 @@
   </mat-form-field>
   <br>
   <mat-form-field class="col">
-    <input matInput placeholder="Email *" id="email" name="email" [(ngModel)]="society.email">
+    <input matInput placeholder="Email"  id="email" name="email" [(ngModel)]="society.email">
   </mat-form-field>
   <br>
   <!------------------------------------------city-->

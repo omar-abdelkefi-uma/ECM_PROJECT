@@ -5,12 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 
 const routes: Routes = [
- 
-  { path: '', redirectTo:'login',pathMatch:'full'  },
-  { path: 'login', component: LoginComponent  },
-  {path:'login/:errorMessage' , component:LoginComponent },
-  {path:'newPassword/:token' , component:NewPasswordComponent },
-  {path:'forgetpassword' , component:ForgetPasswordComponent },
+
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'login/:errorMessage', component: LoginComponent },
+  { path: 'login/:message', component: LoginComponent },
+  { path: 'newPassword/:token', component: NewPasswordComponent },
+  { path: 'forgetpassword', component: ForgetPasswordComponent },
 ]
 
 

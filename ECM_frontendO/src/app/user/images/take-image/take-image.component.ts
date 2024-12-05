@@ -1,6 +1,5 @@
 import { Component, Input, NgZone, OnInit, Renderer2 } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Card } from 'src/app/models/user/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
@@ -15,22 +14,6 @@ import { User } from 'src/app/models/user/user';
   styleUrls: ['./take-image.component.scss']
 })
 export class TakeImageComponent implements OnInit {
-  // toggle webcam on/off
-  public showWebcam = false;
-  public allowCameraSwitch = true;
-  public multipleWebcamsAvailable = false;
-  public deviceId: string;
-  public videoOptions: MediaTrackConstraints = {
-    // width: {ideal: 1024},
-    // height: {ideal: 576}
-  };
-  public errors: WebcamInitError[] = [];
-  // latest snapshot
-  public webcamImage: WebcamImage = null;
-  // webcam snapshot trigger
-  private trigger: Subject<void> = new Subject<void>();
-  // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
-  private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
   imagesRect: Alias[] = [];
   imagese: Alias[] = [];
   img: Alias;
@@ -43,10 +26,6 @@ export class TakeImageComponent implements OnInit {
   images: card[] = [];
   i: number;
   public ngOnInit(): void {
-    WebcamUtil.getAvailableVideoInputs()
-      .then((mediaDevices: MediaDeviceInfo[]) => {
-        this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
-      });
     this.id = this.route.snapshot.params['id'];
     this.i = 0;
     this.userservice.getuser(this.id).subscribe(data => {
@@ -66,51 +45,7 @@ export class TakeImageComponent implements OnInit {
       this.imagese = this.imagesRect;
     });
   }
-  /*******************methods webcam */
-  //take a snapshot
-  public triggerSnapshot(): void {
-    this.trigger.next();
-  }
-  public toggleWebcam(): void {
-    this.showWebcam = !this.showWebcam;
-  }
-  public handleInitError(error: WebcamInitError): void {
-    this.errors.push(error);
-  }
-  public showNextWebcam(directionOrDeviceId: boolean | string): void {
-    // true => move forward through devices
-    // false => move backwards through devices
-    // string => move to device with given deviceId
-    this.nextWebcam.next(directionOrDeviceId);
-  }
-  public handleImage(webcamImage: WebcamImage): void {
-    console.info('received webcam image', webcamImage);
-    this.webcamImage = webcamImage;
-    const buttons = document.querySelectorAll('.btn-floating');
-    buttons.forEach((el: any) => {
-      this.renderer.removeClass(el, 'btn-floating');
-      //distance between controle
-      this.renderer.addClass(el, 'px-3');
-      //lenght
-      this.renderer.addClass(el.firstElementChild, 'fa-3x');
-    });
-    this.card = new Card();
-    this.card.img = webcamImage.imageAsDataUrl;
-    this.cards.push(this.card);
-    this.slides = this.chunk(this.cards, 3);
-    this.imageservice.imagesuser.push(this.card.img.substring(23))
-    this.index = this.index + 1;
-  }
-  public cameraWasSwitched(deviceId: string): void {
-    console.log('active device: ' + deviceId);
-    this.deviceId = deviceId;
-  }
-  public get triggerObservable(): Observable<void> {
-    return this.trigger.asObservable();
-  }
-  public get nextWebcamObservable(): Observable<boolean | string> {
-    return this.nextWebcam.asObservable();
-  }
+ 
   /********************************************************************** */
   chunk(arr: any, chunkSize: number) {
     let R = [];
@@ -264,7 +199,7 @@ export class TakeImageComponent implements OnInit {
             this.card.img = this.cardImageBase64;
             this.cards.push(this.card);
             this.slides = this.chunk(this.cards, 3);
-            this.imageservice.imagesuser.push(this.card.img.substring(23));
+            this.imageservice.imagesuser.push(this.card.img.split(',')[1]);
           }
         };
       };

@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-6">
+<div class="header bg-gradient-light pb-8 pt-5 pt-md-6">
   <!-------------------------------------------update-->
 </div>
 <!-- Page content -->
@@ -25,7 +25,7 @@
             <div class="form">
               <div class="row">
                 <mat-form-field style="width: 50%;">
-                  <input matInput placeholder="Role *" formControlName="roleControl" name="rolename"
+                  <input matInput placeholder="Role"  formControlName="roleControl" name="rolename"
                     [(ngModel)]="role.name">
                   <mat-error *ngIf="rolegroup.get('roleControl').invalid">Role est requis
                   </mat-error>

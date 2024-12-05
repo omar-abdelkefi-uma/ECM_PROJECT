@@ -1,34 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-  /*REMOVE BLACK BORDER*/
-  *:focus {
-    outline: none !important;
-   
-   }
+/*REMOVE BLACK BORDER*/
+*:focus {
+  outline: none !important;
 
-   html,body {
-    height: 100vH;
-    overflow: auto;
-  }
-  
-  // div {
-  //     background-color: rgba(86,61,124,.15);
-  //     border: 1px solid rgba(86,61,124,.15);
-  // }
-  // fa-icon {
-  //   vertical-align: middle;
-  //   color: red;
-  // }
-  
-  /* Flatten das boostrap */
-  .well, .navbar-inner, .popover, .btn, .tooltip, input, select, textarea, pre, .progress, .modal, .add-on, .alert, .table-bordered, .nav>.active>a, .dropdown-menu, .tooltip-inner, .badge, .label, .img-polaroid, .panel {
-      -moz-box-shadow: none !important;
-      -webkit-box-shadow: none !important;
-      box-shadow: none !important;
-      -webkit-border-radius: 0px !important;
-      -moz-border-radius: 0px !important;
-      border-radius: 0px !important;
-      border-collapse: collapse !important;
-      background-image: none !important;
-  }
+}
+
+
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: #BDADBD;
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  color: #ADBDB4;
+  background: rgba(0, 0, 0, 0);
+}
+
+.mat-tab-header{
+  background-color: #bdb3ad;
+  opacity: 0.6;
+}
+
+html,
+body {
+  height: 100vH;
+  overflow: auto;
+}
+
+// div {
+//     background-color: rgba(86,61,124,.15);
+//     border: 1px solid rgba(86,61,124,.15);
+// }
+// fa-icon {
+//   vertical-align: middle;
+//   color: red;
+// }
+
+/* Flatten das boostrap */
+.well,
+.navbar-inner,
+.popover,
+.btn,
+.tooltip,
+input,
+select,
+textarea,
+pre,
+.progress,
+.modal,
+.add-on,
+.alert,
+.table-bordered,
+.nav>.active>a,
+.dropdown-menu,
+.tooltip-inner,
+.badge,
+.label,
+.img-polaroid,
+.panel {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  border-collapse: collapse !important;
+  background-image: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/*active label*/
+::ng-deep.mat-tab-label-active {
+  font-weight: bold;
+  color: #fff;
+}
+
+::ng-deep .mat-ink-bar {
+  background-color: #748ca3 !important;
+}

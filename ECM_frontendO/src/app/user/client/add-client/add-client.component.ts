@@ -177,7 +177,7 @@ export class AddClientComponent implements OnInit {
             this.cardImageBase64 = imgBase64Path;
             this.isImageSaved = true;
             this.client.imageprofile = new Alias();
-            this.client.imageprofile.imageid = this.cardImageBase64.substring(23);
+            this.client.imageprofile.imageid = this.cardImageBase64.split(',')[1];
           }
         };
       };
