@@ -25,7 +25,7 @@
 	  <td align="center" bgcolor="#ffffff"  style="padding: 40px 0 30px 0;">
 	  
 	  <p align="center">
-     <img src='cid:myLogo'>
+     <img src='cid:myLogo' width="300">
     </p>
 	  </td>  
 	  

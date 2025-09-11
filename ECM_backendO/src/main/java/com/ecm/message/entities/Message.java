@@ -37,7 +37,7 @@ public class Message implements Serializable {
 
 	public String content;
 	// if recipient goupe you have to manage groupe
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST})
 	private Recipient recipient;
 
 	@ManyToOne
